@@ -81,7 +81,7 @@ public class Sliding : Tutorial
         // sliding down a slope
         else
         {
-            rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
+            rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
         }
 
         if (slideTimer <= 0)
@@ -91,7 +91,7 @@ public class Sliding : Tutorial
     private void StopSlide()
     {
         pm.sliding = false;
-
+        
         transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
     }
 
