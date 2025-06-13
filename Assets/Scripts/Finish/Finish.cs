@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _textMeshPro;
     [SerializeField] private GameObject _finishPanel;
     [SerializeField] private float _time;
     [SerializeField] private Rigidbody _rb;
@@ -14,6 +16,7 @@ public class Finish : MonoBehaviour
     {
         if(_stop) return;
         _time += Time.deltaTime;
+        _textMeshPro.text = _time.ToString();
     }
 
     private void OnTriggerEnter(Collider other)

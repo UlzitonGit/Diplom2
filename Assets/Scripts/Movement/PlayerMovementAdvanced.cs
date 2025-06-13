@@ -104,6 +104,7 @@ public class PlayerMovementAdvanced : Tutorial
 
     private void Update()
     {
+        if(rb.velocity.magnitude < 0.5f) sounds.StopWalking();
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
@@ -163,6 +164,7 @@ public class PlayerMovementAdvanced : Tutorial
     bool keepMomentum;
     private void StateHandler()
     {
+     
         // Mode - Freeze
         if (freeze)
         {
@@ -228,7 +230,7 @@ public class PlayerMovementAdvanced : Tutorial
         // Mode - Sprinting
         else if (grounded && Input.GetKey(sprintKey))
         {
-            sounds.Walking();
+            sounds.Running();
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
         }
@@ -236,7 +238,10 @@ public class PlayerMovementAdvanced : Tutorial
         // Mode - Walking
         else if (grounded)
         {
-            sounds.StopWalking();
+            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            {
+                sounds.Walking();
+            }
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }

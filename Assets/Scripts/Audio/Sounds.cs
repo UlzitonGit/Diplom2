@@ -20,6 +20,13 @@ public class Sounds : MonoBehaviour
 
     public void Walking()
     {
+        _walkAudioSource.pitch=1;
+        _walkAudioSource.mute=false;
+        print("walking");
+    }
+    public void Running()
+    {
+        _walkAudioSource.pitch=1.5f;
         _walkAudioSource.mute=false;
     }
     public void PlayJumpSound()
