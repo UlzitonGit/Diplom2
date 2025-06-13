@@ -79,7 +79,7 @@ public class UiLogic : MonoBehaviour
     }
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 
