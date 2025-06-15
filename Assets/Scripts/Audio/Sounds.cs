@@ -18,6 +18,10 @@ public class Sounds : MonoBehaviour
         _walkAudioSource.mute=true;
     }
 
+    public void StopSounds(bool state)
+    {
+        _walkAudioSource.enabled=state;
+    }
     public void Walking()
     {
         _walkAudioSource.pitch=1;

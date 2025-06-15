@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
+    private Sounds sounds;
     public GameObject pauseMenu;
     [SerializeField] protected PlayerCam playerCam;
     public bool isPaused;
 
     void Start()
     {
+        sounds = FindObjectOfType<Sounds>();
         pauseMenu.SetActive(false);
     }
 
@@ -21,10 +23,12 @@ public class Pause : MonoBehaviour
         {
             if(isPaused)
             {
+                sounds.StopSounds(true);
                 ResumeGame();
             }
             else
             {
+                sounds.StopSounds(false);
                 PauseGame();
             }
         }

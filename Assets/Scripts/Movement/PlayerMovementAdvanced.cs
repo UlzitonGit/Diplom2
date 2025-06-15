@@ -164,7 +164,7 @@ public class PlayerMovementAdvanced : Tutorial
     bool keepMomentum;
     private void StateHandler()
     {
-     
+        if(Time.deltaTime == 0) return;
         // Mode - Freeze
         if (freeze)
         {
@@ -230,7 +230,7 @@ public class PlayerMovementAdvanced : Tutorial
         // Mode - Sprinting
         else if (grounded && Input.GetKey(sprintKey))
         {
-            sounds.Running();
+            if(rb.velocity.magnitude > 0.5f) sounds.Running();
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
         }
@@ -238,7 +238,7 @@ public class PlayerMovementAdvanced : Tutorial
         // Mode - Walking
         else if (grounded)
         {
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 && Time.deltaTime != 0)
             {
                 sounds.Walking();
             }

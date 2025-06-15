@@ -81,7 +81,7 @@ public class Sliding : Tutorial
         // sliding down a slope
         else
         {
-            rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+           rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
         }
 
         if (slideTimer <= 0)
